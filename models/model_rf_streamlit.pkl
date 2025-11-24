@@ -1,0 +1,18 @@
+# train_and_save_model.py
+import pickle
+from sklearn.datasets import load_iris
+from sklearn.ensemble import RandomForestClassifier
+
+# Load dataset
+iris = load_iris()
+X, y = iris.data, iris.target
+
+# Train RandomForest model
+model = RandomForestClassifier(n_estimators=100, random_state=42)
+model.fit(X, y)
+
+# Save model to pickle file
+with open("model_rf_streamlit.pkl", "wb") as f:
+    pickle.dump(model, f)
+
+print("✅ Model saved as model_rf_streamlit.pkl")
